@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  ecommerce-rest-api:
+    image: ecomm/ecommerce:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on: 
+      - mysql 
+    environment:
+      RDS_HOSTNAME: mysql
+      RDS_PORT: 3306
+      RDS_DB_NAME: ecommdb
+      RDS_USERNAME: mysql-user
+      RDS_PASSWORD: dummypassword
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password12 
+      MYSQL_USER: mysql-user
+      MYSQL_PASSWORD: dummypassword
+      MYSQL_DATABASE: ecommdb
+    volumes:
+      - mysql-database-data-volume:/var/lib/mysql
+
+# Volumes
+volumes:
+  mysql-database-data-volume:
