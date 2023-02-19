@@ -82,7 +82,9 @@ public class WebSecurityConfig {
                 "/swagger-ui.html",
                 "/webjars/**").permitAll()
             .antMatchers("/h2/console/**").permitAll() // H2 database calls during testing
-            .anyRequest().authenticated();
+            .anyRequest().authenticated()
+            .and()
+            .httpBasic();
 
         http.addFilterBefore(authenticationJwtTokenFilter(),
             UsernamePasswordAuthenticationFilter.class);
