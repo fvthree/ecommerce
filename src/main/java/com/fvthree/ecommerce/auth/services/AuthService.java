@@ -3,6 +3,8 @@ package com.fvthree.ecommerce.auth.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 
 
 @Service
+@Transactional
 @Slf4j
 public class AuthService {
 	

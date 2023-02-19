@@ -2,6 +2,8 @@ package com.fvthree.ecommerce.category.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +22,7 @@ import exceptions.HTTP404Exception;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Transactional
 @Slf4j
 public class CategoryServiceImpl implements CategoryService {
 	
